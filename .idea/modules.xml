@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/VAD_HMM.iml" filepath="$PROJECT_DIR$/.idea/VAD_HMM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../resemblyzer/.idea/resemblyzer.iml" filepath="$PROJECT_DIR$/../resemblyzer/.idea/resemblyzer.iml" />
     </modules>
   </component>
 </project>

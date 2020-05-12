@@ -4,6 +4,7 @@ import pickle
 import os
 from hmmlearn import hmm
 from sklearn.model_selection import train_test_split
+from python_speech_features import mfcc, logfbank, delta
 
 
 def repeatingNumbers(numList):
@@ -72,7 +73,7 @@ def train_model(data):
     for label in data.keys():  # for 0, 1
         print("training label:", label)
         # GaussianHMM
-        model = hmm.GMMHMM(n_components=8, covariance_type="diag")
+        model = hmm.GMMHMM(n_components=2, covariance_type="diag", n_mix=2)
         length = []
         feat = np.asarray(data[label])
         feature = feat[0]
@@ -86,7 +87,17 @@ def train_model(data):
     return learned_hmm
 
 
-def main(xypath, outputpath):
+def append_delta_features(x_feats):
+    x_n_new = []
+    for feat in x_feats:
+        delta_feat = delta(feat, N=1)
+        delta2_feat = delta(delta_feat, N=1)
+        feat_39 = np.concatenate((delta_feat, delta2_feat, feat), axis=1)
+        x_n_new.append(feat_39)
+    return np.asarray(x_n_new)
+
+
+def main(xypath, outputpath, coeff):
     x = np.load(xypath + 'x.npy')
     y = np.load(xypath + 'y.npy')
     patient_ids = np.load(xypath + 'patient_ids.npy')
@@ -100,11 +111,11 @@ def main(xypath, outputpath):
         X_train = np.concatenate((x[:index_start], x[index_end:]), axis=0)
         y_train = np.concatenate((y[:index_start], y[index_end:]), axis=0)
 
-        # X_train = x[:index_start] + x[index_end:]
-        # y_train = y[:index_start] + y[index_end:]
+        X_test = x[index_start: index_end]
+        y_test = y[index_start: index_end]
 
-        # x_feats_for_s = create_sequences(y_train, X_train, 1)
-        # x_feats_for_n = create_sequences(y_train, X_train, 0)
+        print(X_train.shape, X_test.shape)
+        print(y_train.shape, y_test.shape)
 
         x_n, x_s = [], []
         tedad = repeatingNumbers(y_train)
@@ -116,6 +127,12 @@ def main(xypath, outputpath):
                 x_n.append(X_train[row[0]: row[1]].squeeze(axis=1))
             elif row[2] == 1:
                 x_s.append(X_train[row[0]: row[1]].squeeze(axis=1))
+
+        if coeff == 39:
+            # append delta and double delta features
+            x_n = append_delta_features(x_n)
+            x_s = append_delta_features(x_s)
+            ########################################
 
         data = dict()
         data[0] = x_n
@@ -131,4 +148,12 @@ def main(xypath, outputpath):
         print("Model Learned")
 
 
-main('python_speech_features/coeff13/', 'python_speech_features/coeff13/GMMHMM_8_states/')
+## xypath, outputpath (where to put trained models)
+
+# 'GaussianHMM_4_states/', 'GaussianHMM_2_states/', 'GMMHMM_8_states_4_mix/', 'GMMHMM_8_states_2_mix/',
+#  'GMMHMM_2_states_8_mix/', 'GMMHMM_4_states_8_mix/',
+pathss = ['GMMHMM_2_states_4_mix/', 'GMMHMM_4_states_2_mix/']
+
+for pat in pathss:
+    main('/scratch/tina/python_speech_features/coeff39/', '/scratch/tina/python_speech_features/coeff39/'+pat, coeff=39)
+
