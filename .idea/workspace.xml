@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a16747b-ce41-4fcc-8106-65bd3a28bf4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mickey_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/check_the_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training_info.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/ThetaOscillator-SyllableSegmentation.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/check_mfcc.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/evaluation.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/hmm_mickey.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/mytest.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/testnewdataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VAD_HMM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VAD_HMM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concat_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/concat_results.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing_step.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing_step.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/training_step.py" beforeDir="false" afterPath="$PROJECT_DIR$/training_step.py" afterDir="false" />
@@ -38,6 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="954642b3-929a-4189-b415-724b70852cb7" />
   <component name="ProjectId" id="1baih9uatPK9FeBZ89bq82XMP0Y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -77,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588876721711</updated>
-      <workItem from="1588876726529" duration="58265000" />
+      <workItem from="1588876726529" duration="101083000" />
     </task>
     <servers />
   </component>

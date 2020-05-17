@@ -4,15 +4,16 @@ from tqdm import tqdm
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import pickle
 from python_speech_features import mfcc, logfbank, delta
-from sklearn.metrics import precision_recall_curve, auc, roc_curve, roc_auc_score, precision_score, recall_score, f1_score
+from sklearn.metrics import precision_recall_curve, auc, roc_curve, roc_auc_score, precision_score, recall_score, \
+    f1_score
 import matplotlib.pyplot as plt
 from numpy import interp
 from statistics import mean
 import matplotlib
 import os
 
-
 matplotlib.use('Agg')
+
 
 def repeatingNumbers(numList):
     indices = []
@@ -29,9 +30,9 @@ def repeatingNumbers(numList):
     return indices
 
 
-def get_windows(y_test, label, win_len = 10):
-    indices = [i for i, x in enumerate(y_test) if x ==  label]
-    ranges = sum((list(t) for t in zip(indices, indices[1:]) if t[0]+1 != t[1]), [])
+def get_windows(y_test, label, win_len=10):
+    indices = [i for i, x in enumerate(y_test) if x == label]
+    ranges = sum((list(t) for t in zip(indices, indices[1:]) if t[0] + 1 != t[1]), [])
     iranges = iter(indices[0:1] + ranges + indices[-1:])
     range_list = []
     for n in iranges:
@@ -39,8 +40,8 @@ def get_windows(y_test, label, win_len = 10):
         e = next(iranges)
         diff = e - s
         number_of_windows = diff // win_len
-        for num in range (0,number_of_windows): # +1 added
-            range_list.append([s + (win_len * num) , s + (win_len * (num+1)) , label])
+        for num in range(0, number_of_windows):  # +1 added
+            range_list.append([s + (win_len * num), s + (win_len * (num + 1)), label])
     return range_list
 
 
@@ -61,19 +62,19 @@ def prediction(test_data, trained):
 
 
 def report(y_test, y_pred, show_cm=True):
-#     print("confusion_matrix:\n\n", confusion_matrix(y_test, y_pred))
+    #     print("confusion_matrix:\n\n", confusion_matrix(y_test, y_pred))
     print("----------------------------------------------------------")
     print("----------------------------------------------------------\n")
     print("Classification based on outputting the most likely class by finding the maximum between two scores")
     print("\n")
     print("classification_report:\n\n", classification_report(y_test, y_pred, target_names=['nonspeech', 'speech']))
-#     print("----------------------------------------------------------")
+    #     print("----------------------------------------------------------")
     print("----------------------------------------------------------\n")
     print("Accuracy:", accuracy_score(y_test, y_pred))
-#     print("----------------------------------------------------------")
+    #     print("----------------------------------------------------------")
     print("----------------------------------------------------------\n")
     # if show_cm:
-        # plot_confusion_matrix(confusion_matrix(y_test, y_pred), ['nonspeech', 'speech'])
+    # plot_confusion_matrix(confusion_matrix(y_test, y_pred), ['nonspeech', 'speech'])
 
 
 def calculate_x_y_tests(y_new, X_test, coeff):
@@ -195,7 +196,7 @@ def main(xypath, trainedpath, coeff, win_len=10):
         axes[0].step(recall, precision, label=lab)
 
         # ROC:
-        fpr, tpr, thresholds = roc_curve(y_test_new, y_probs)
+        fpr, tpr, _ = roc_curve(y_test_new, y_probs)
         roc_auc = auc(fpr, tpr)
         mean_tpr = interp(mean_fpr, fpr, tpr)
         mean_tpr[0] = 0.0
@@ -204,8 +205,10 @@ def main(xypath, trainedpath, coeff, win_len=10):
         lab = 'Fold %d AUC=%.4f' % (k + 1, roc_auc)
         axes[1].step(fpr, tpr, label=lab)
 
-        gmeans = np.sqrt(tpr * (1 - fpr))
-        ix = np.argmax(gmeans)
+
+        f1scores = 2 * (precision * recall) / (precision + recall)
+
+        ix = np.argmax(f1scores)
         print('Best Threshold=%f, G-Mean=%.3f \n' % (thresholds[ix], gmeans[ix]))
         print("y_probs:", min(y_probs), max(y_probs), mean(y_probs))
         y_predicted_threshold = np.where(y_probs >= thresholds[ix], 1, 0)
@@ -223,7 +226,8 @@ def main(xypath, trainedpath, coeff, win_len=10):
         results.append("--------------------------------- Fold #: %d ------------------------------------ \n" % (k + 1))
         results.append('y probabilities: min= %.3f, max=%.3f, mean=%.3f' % (min(y_probs), max(y_probs), mean(y_probs)))
         results.append('Best Threshold=%f, G-Mean=%.3f \n' % (thresholds[ix], gmeans[ix]))
-        results.append('Best Precison=%.3f, Best Recall=%.3f, f-1 score=%.3f \n' % (best_precison, best_recall, best_f1_score))
+        results.append(
+            'Best Precison=%.3f, Best Recall=%.3f, f-1 score=%.3f \n' % (best_precison, best_recall, best_f1_score))
         results.append(classification_report(y_test_new, y_predicted_threshold, target_names=['nonspeech', 'speech']))
         results.append('\n')
 
@@ -289,7 +293,7 @@ def main(xypath, trainedpath, coeff, win_len=10):
 
 ### 4  ---> testing the ones ready in coeff39
 # [12,12], [12,10], [12,2], [2,10], [2,12], [4,10], [4,12], [8,10],[8,12], [12,4],
-lists = [[12,8]]
+lists = [[12, 8]]
 # lists=[[10,10], [10,12], [10,2], [10,4], [10,8], [2,2], [2,4], [2,8], [4,2], [4,4], [4,8],
 #        [8,2], [8,4], [8,8]]
 

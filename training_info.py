@@ -68,15 +68,12 @@ def iter_from_X_lengths(X, lengths):
             yield start[i], end[i]
 
 
-def train_model(data, ncomponents, mmixtures):
-    print("number of components:", ncomponents)
-    print("number of mixtures:", mmixtures)
+def train_model(data):
     learned_hmm = dict()
     for label in data.keys():  # for 0, 1
         print("training label:", label)
         # GaussianHMM
-        #  hmm.GMMHMM(n_components=2, covariance_type="diag", n_mix=2)
-        model = hmm.GMMHMM(n_components=ncomponents, n_mix=mmixtures, covariance_type="diag")
+        model = hmm.GMMHMM(n_components=2, covariance_type="diag", n_mix=2)
         length = []
         feat = np.asarray(data[label])
         feature = feat[0]
@@ -99,8 +96,30 @@ def append_delta_features(x_feats):
         x_n_new.append(feat_39)
     return np.asarray(x_n_new)
 
+def calculate_x_y_tests(y_new, X_test, coeff):
+    x_test_new = []
+    y_test_new = []
+    if coeff == 13:
+        # print("coeff 13 .....")
+        for s_e_l in y_new:
+            x_test_new.append(X_test[s_e_l[0]: s_e_l[1]].squeeze(axis=1))
+            y_test_new.append(s_e_l[2])
+        return np.asarray(x_test_new), np.asarray(y_test_new)
+    elif coeff == 39:
+        for s_e_l in y_new:
+            feat = X_test[s_e_l[0]: s_e_l[1]].squeeze(axis=1)
+            delta_feat = delta(feat, N=1)
+            delta2_feat = delta(delta_feat, N=1)
+            feat_39 = np.concatenate((delta_feat, delta2_feat, feat), axis=1)
+            x_test_new.append(feat_39)
+            y_test_new.append(s_e_l[2])
+        return np.asarray(x_test_new), np.asarray(y_test_new)
+    else:
+        "Not defined!"
 
-def main(xypath, outputpath, ncomponents, mmixtures, coeff):
+
+def main(xypath, outputpath, coeff):
+    win_len = 10
     x = np.load(xypath + 'x.npy')
     y = np.load(xypath + 'y.npy')
     patient_ids = np.load(xypath + 'patient_ids.npy')
@@ -109,7 +128,7 @@ def main(xypath, outputpath, ncomponents, mmixtures, coeff):
 
     for k in tqdm(range(len(patient_ranges))):  # range(len(patient_ranges)) # TODO
         index_start, index_end, p_id = patient_ranges[k]
-        print(index_start, index_end, p_id)
+        print("Indexes: ", index_start, index_end, p_id)
 
         X_train = np.concatenate((x[:index_start], x[index_end:]), axis=0)
         y_train = np.concatenate((y[:index_start], y[index_end:]), axis=0)
@@ -117,70 +136,45 @@ def main(xypath, outputpath, ncomponents, mmixtures, coeff):
         X_test = x[index_start: index_end]
         y_test = y[index_start: index_end]
 
-        print(X_train.shape, X_test.shape)
-        print(y_train.shape, y_test.shape)
+        # print("X_train:", X_train.shape, "y_train:", y_train.shape)
+        # print("X_test:", X_test.shape, "y_test", y_test.shape)
 
         x_n, x_s = [], []
         tedad = repeatingNumbers(y_train)
         for row in tedad:
             if row[0] >= row[1]:
-                print("error")
+                # print("error")
                 continue
             if row[2] == 0:
                 x_n.append(X_train[row[0]: row[1]].squeeze(axis=1))
             elif row[2] == 1:
                 x_s.append(X_train[row[0]: row[1]].squeeze(axis=1))
 
-        if coeff == 39:
-            # append delta and double delta features
-            x_n = append_delta_features(x_n)
-            x_s = append_delta_features(x_s)
-            ########################################
+        ns = []
+        for seq in x_n:  # each seq is a (nx13) array
+            ns.append(np.asarray(seq).shape[0])
 
-        data = dict()
-        data[0] = x_n
-        data[1] = x_s
-        # print(x_feats_for_n)
-        print("I am Learning")
+        ss = []
+        for seq in x_s:  # each seq is a (nx13) array
+            ss.append(np.asarray(seq).shape[0])
+        print("number of non speech sequences:", len(x_n))
+        print("number of speech sequences:", len(x_s))
+        print("sum ns: ", sum(ns))
+        print("sum ss:", sum(ss))
 
-        learned_hmm = train_model(data, ncomponents, mmixtures)
+        print(min(ss), max(ss), sum(ss)/len(ss))
+        tedad = repeatingNumbers(y_test)
+        # win_len = 10
+        y_new = []
+        for row in tedad:
+            diff = row[1] - row[0]
+            number_of_windows = diff // win_len
+            for num in range(0, number_of_windows):  # +1 added
+                y_new.append([row[0] + (win_len * num), row[0] + (win_len * (num + 1)), row[2]])
 
-        pickle_name = outputpath + "learned" + p_id + ".pkl"
-        with open(pickle_name, "wb") as file:
-            pickle.dump(learned_hmm, file)
-        print("Model Learned")
-
-
-## xypath, outputpath (where to put trained models)
-
-# pathss = ['GaussianHMM_4_states/', 'GaussianHMM_2_states/', 'GMMHMM_8_states_4_mix/', 'GMMHMM_8_states_2_mix/',
-#  'GMMHMM_2_states_8_mix/', 'GMMHMM_4_states_8_mix/', 'GMMHMM_2_states_4_mix/', 'GMMHMM_4_states_2_mix/']
-#
-# for pat in pathss:
-#     main('python_speech_features/coeff13/', 'python_speech_features/coeff13/'+pat, coeff=13)
-
-# main('/scratch/tina/python_speech_features/coeff13/', '/scratch/tina/python_speech_features/coeff13/GaussianHMM_10_states', coeff=13)
+        x_test_new, y_test_new = calculate_x_y_tests(y_new, X_test, 13)
+        # print(y_test_new.shape)
 
 
-# (4, 10) , (4, 12) missing
-# nofcomponents = [8, 10, 12]
-# nofcomponents2 = [2, 4, 8, 10, 12]
-# for n in nofcomponents:
-#     for m in nofcomponents2:
-#         # print(n, m, pat)
-#         filename = 'GMMHMM_' + str(n) + '_states_' + str(m) + '_mix/'
-#         print(filename)
-#         print("Starting: ", filename)
-#         main('/scratch/tina/python_speech_features/coeff13/',
-#              '/scratch/tina/python_speech_features/coeff39/' + filename, n, m, coeff=39)
+main('/scratch/tina/python_speech_features/coeff13/', '/scratch/tina/python_speech_features/coeff13/GaussianHMM_4_states', coeff=13)
 
-
-listss = [[10,10], [10,12], [10,2], [10,4], [10,8], [12,10], [12,12], [12,2], [12,4], [12,8]
-    , [2,10], [2,12], [4,10], [8,10], [8,12]]
-
-for l in listss:
-    filename = 'GMMHMM_' + str(l[0]) + '_states_' + str(l[1]) + '_mix/'
-    print(filename)
-    print("Starting: ", filename)
-    main('/scratch/tina/python_speech_features/coeff13/',
-         '/scratch/tina/python_speech_features/coeff39/' + filename, l[0], l[1], coeff=39)

@@ -9,38 +9,38 @@ from sklearn.metrics import precision_recall_curve, auc
 from sklearn.model_selection import KFold
 from sklearn.svm import SVC
 
-FOLDS = 5
+from PIL import Image
+import PIL
+import os
+import glob
+from pathlib import Path
+import pickle
+# subfolders = [f.path for f in os.scandir('/scratch/tina/python_speech_features/coeff13/') if f.is_dir()]
+# subfolders = sorted(subfolders)
+#
+# for subfolder in subfolders:
+#     # creating a image object (main image)
+#     img_path = glob.glob(subfolder + '/*.png')[0]
+#     print(os.path.basename(img_path))
+#     img = Image.open(img_path)
+#     img.show()
+#     # save a image using extension
+#     img = img.save("/scratch/tina/python_speech_features/images/" + os.path.basename(Path(subfolder)) + ".png")
 
-X, y = make_blobs(n_samples=1000, n_features=2, centers=2, cluster_std=10.0,
-    random_state=12345)
 
-f = plt.figure()
-# f, axes = plt.subplots(1, 1, figsize=(10, 5))
+# subfolders.remove('/scratch/tina/python_speech_features/coeff13/GaussianHMM_10_states')
+# from shutil import copyfile
+# for subfolder in subfolders:
+#     print(subfolder)
+#     txt_path = glob.glob(subfolder + '/*.txt')[0]
+#     copyfile(txt_path, '/scratch/tina/python_speech_features/texts/coeff13/' + os.path.basename(Path(subfolder)) + ".txt")
 
-k_fold = KFold(n_splits=FOLDS, shuffle=True, random_state=12345)
-predictor = SVC(kernel='linear', C=1.0, probability=True, random_state=12345)
+# GMMHMM_2_states_2_mix
+# GaussianHMM_2_states
+with open('/scratch/tina/python_speech_features/coeff13/GaussianHMM_4_states/learned30.pkl', "rb") as file:
+    learned_hmm = pickle.load(file)
 
-y_real = []
-y_proba = []
-for i, (train_index, test_index) in enumerate(k_fold.split(X)):
-    Xtrain, Xtest = X[train_index], X[test_index]
-    ytrain, ytest = y[train_index], y[test_index]
-    predictor.fit(Xtrain, ytrain)
-    pred_proba = predictor.predict_proba(Xtest)
-    precision, recall, _ = precision_recall_curve(ytest, pred_proba[:,1])
-    lab = 'Fold %d AUC=%.4f' % (i+1, auc(recall, precision))
-    plt.step(recall, precision, label=lab)
-    y_real.append(ytest)
-    y_proba.append(pred_proba[:,1])
 
-y_real = numpy.concatenate(y_real)
-y_proba = numpy.concatenate(y_proba)
-precision, recall, _ = precision_recall_curve(y_real, y_proba)
-lab = 'Overall AUC=%.4f' % (auc(recall, precision))
-plt.step(recall, precision, label=lab, lw=2, color='black')
-plt.xlabel('Recall')
-plt.ylabel('Precision')
-plt.legend(loc='lower left', fontsize='small')
-
-f.tight_layout()
-plt.show()
+print(learned_hmm[0].transmat_)
+    # print(learned_hmm[1].monitor_)
+    # print(learned_hmm[1].startprob_)
