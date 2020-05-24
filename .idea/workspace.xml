@@ -2,20 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a16747b-ce41-4fcc-8106-65bd3a28bf4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Mickey_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/check_the_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/training_info.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mapped_labels.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_webrtc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../py-webrtcvad/.idea/py-webrtcvad.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/ThetaOscillator-SyllableSegmentation.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/check_mfcc.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/evaluation.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/hmm_mickey.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/mytest.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/testnewdataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VAD_HMM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VAD_HMM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/concat_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/concat_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_the_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/check_the_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing_step.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing_step.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_step.py" beforeDir="false" afterPath="$PROJECT_DIR$/training_step.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python-vad/example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-vad/example.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python-vad/pyvad/vad.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python-vad/pyvad/vad.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resemblyzer/evaluate_copddata.py" beforeDir="false" afterPath="$PROJECT_DIR$/../resemblyzer/evaluate_copddata.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resemblyzer/evaluate_librispeech.py" beforeDir="false" afterPath="$PROJECT_DIR$/../resemblyzer/evaluate_librispeech.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resemblyzer/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/../resemblyzer/functions.py" afterDir="false" />
@@ -56,6 +59,41 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="test_webrtc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VAD_HMM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_webrtc.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test_webrtc" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -79,7 +117,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588876721711</updated>
-      <workItem from="1588876726529" duration="101083000" />
+      <workItem from="1588876726529" duration="127145000" />
+      <workItem from="1590208953075" duration="7610000" />
     </task>
     <servers />
   </component>
@@ -92,13 +131,52 @@
     </state>
     <state x="496" y="197" key="#Deployment/0.23.1792.1020@0.23.1792.1020" timestamp="1588877086368" />
     <state x="496" y="197" key="#Deployment/0.23.1792.1022@0.23.1792.1022" timestamp="1588883833795" />
+    <state x="599" y="341" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589927075216">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state x="599" y="341" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1020@0.23.1792.1020" timestamp="1589927075216" />
     <state x="634" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588961516558">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state x="634" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1022@0.23.1792.1022" timestamp="1588961516558" />
+    <state width="1750" height="123" key="GridCell.Tab.0.bottom" timestamp="1590208010010">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.0.bottom/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010010" />
+    <state width="1750" height="123" key="GridCell.Tab.0.center" timestamp="1590208010009">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.0.center/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010009" />
+    <state width="1750" height="123" key="GridCell.Tab.0.left" timestamp="1590208010009">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.0.left/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010009" />
+    <state width="1750" height="123" key="GridCell.Tab.0.right" timestamp="1590208010010">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.0.right/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010010" />
+    <state width="1750" height="123" key="GridCell.Tab.1.bottom" timestamp="1590208010011">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.1.bottom/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010011" />
+    <state width="1750" height="123" key="GridCell.Tab.1.center" timestamp="1590208010011">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.1.center/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010011" />
+    <state width="1750" height="123" key="GridCell.Tab.1.left" timestamp="1590208010010">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.1.left/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010010" />
+    <state width="1750" height="123" key="GridCell.Tab.1.right" timestamp="1590208010011">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state width="1750" height="123" key="GridCell.Tab.1.right/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010011" />
     <state x="561" y="248" width="670" height="676" key="search.everywhere.popup" timestamp="1589157953776">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
     <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.23.1792.1017@0.23.1792.1017" timestamp="1589157953776" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/VAD_HMM$test_webrtc.coverage" NAME="test_webrtc Coverage Results" MODIFIED="1589931041803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

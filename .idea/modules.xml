@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/VAD_HMM.iml" filepath="$PROJECT_DIR$/.idea/VAD_HMM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../py-webrtcvad/.idea/py-webrtcvad.iml" filepath="$PROJECT_DIR$/../py-webrtcvad/.idea/py-webrtcvad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../python-vad/.idea/python-vad.iml" filepath="$PROJECT_DIR$/../python-vad/.idea/python-vad.iml" />
       <module fileurl="file://$PROJECT_DIR$/../resemblyzer/.idea/resemblyzer.iml" filepath="$PROJECT_DIR$/../resemblyzer/.idea/resemblyzer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../salaar/.idea/salaar.iml" filepath="$PROJECT_DIR$/../salaar/.idea/salaar.iml" />
     </modules>
   </component>
 </project>
