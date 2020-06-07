@@ -8,6 +8,7 @@ from python_speech_features import mfcc, logfbank, delta
 
 
 def repeatingNumbers(numList):
+    # TODO check and assert the continuity of the patients
     indices = []
     i = 0
     while i < len(numList) - 1:
@@ -78,6 +79,10 @@ def train_model(data, ncomponents, mmixtures):
         #  hmm.GMMHMM(n_components=2, covariance_type="diag", n_mix=2)
         model = hmm.GMMHMM(n_components=ncomponents, n_mix=mmixtures, covariance_type="diag")
         length = []
+
+        # TODO check or try features = np.vstack(data[label])
+
+
         feat = np.asarray(data[label])
         feature = feat[0]
         length.append(feature.shape[0])
@@ -85,6 +90,7 @@ def train_model(data, ncomponents, mmixtures):
             feature = np.concatenate((feature, f), axis=0)
             length.append(f.shape[0])
         obj = model.fit(feature, length)
+        # TODO check hmmlearn how do I know if fit succeeded? obj.success_?
         print("trained!")
         learned_hmm[label] = obj
     return learned_hmm
@@ -92,9 +98,9 @@ def train_model(data, ncomponents, mmixtures):
 
 def append_delta_features(x_feats):
     x_n_new = []
-    for feat in x_feats:
-        delta_feat = delta(feat, N=1)
-        delta2_feat = delta(delta_feat, N=1)
+    for feat in x_feats: # (n , ?, 13)
+        delta_feat = delta(feat, N=1) # TODO check why the dimensions are the same (is it zeroing it the first or last element?)
+        delta2_feat = delta(delta_feat, N=1) # TODO the same
         feat_39 = np.concatenate((delta_feat, delta2_feat, feat), axis=1)
         x_n_new.append(feat_39)
     return np.asarray(x_n_new)
@@ -111,6 +117,18 @@ def main(xypath, outputpath, ncomponents, mmixtures, coeff):
         index_start, index_end, p_id = patient_ranges[k]
         print(index_start, index_end, p_id)
 
+        # TODO neeed to iterate on list of ranges then build Xtrain, Ytrain, Xtest, Ytest from ranges
+        #####
+        # buildx = []
+        # ranges_in_train = [ (start,length, patient) for start, length, patient, _, _ in list_of_ranges if patient != k]
+        # ranges = []
+        # for start, length, _ in ranges_in_train:
+        #     ranges.append(length)
+        #     buildx.append(x[start:start+length])
+        #     buildy.append(y[start:start+length])
+        # #####
+        # X_train = np.concatenate(buildx)
+
         X_train = np.concatenate((x[:index_start], x[index_end:]), axis=0)
         y_train = np.concatenate((y[:index_start], y[index_end:]), axis=0)
 
@@ -122,7 +140,8 @@ def main(xypath, outputpath, ncomponents, mmixtures, coeff):
 
         x_n, x_s = [], []
         tedad = repeatingNumbers(y_train)
-        for row in tedad:
+        # TODO merging and spliting multiple times!
+        for row in tedad: # TODO s,e, id
             if row[0] >= row[1]:
                 print("error")
                 continue
@@ -145,7 +164,7 @@ def main(xypath, outputpath, ncomponents, mmixtures, coeff):
 
         learned_hmm = train_model(data, ncomponents, mmixtures)
 
-        pickle_name = outputpath + "learned" + p_id + ".pkl"
+        pickle_name = outputpath + "learned" + p_id + ".pkl" #TODO params.txt
         with open(pickle_name, "wb") as file:
             pickle.dump(learned_hmm, file)
         print("Model Learned")

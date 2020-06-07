@@ -5,10 +5,13 @@
       <paths name="mel23">
         <serverdata>
           <mappings>
+            <mapping deploy="/mnt/FS1/tina/pyannote-audio" local="$PROJECT_DIR$/../pyannote-audio" web="/" />
             <mapping deploy="/home/tina/research/VAD_HMM" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/venv" />
+            <excludedPath local="true" path="$PROJECT_DIR$/../pyannote-audio/ami" />
+            <excludedPath path="/mnt/FS1/tina/pyannote-audio/ami" />
           </excludedPaths>
         </serverdata>
       </paths>

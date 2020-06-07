@@ -10,5 +10,8 @@
     <orderEntry type="module" module-name="salaar" />
     <orderEntry type="module" module-name="py-webrtcvad" />
     <orderEntry type="module" module-name="python-vad" />
+    <orderEntry type="module" module-name="pyannote-audio" />
+    <orderEntry type="module" module-name="tests_venv" />
+    <orderEntry type="module" module-name="pyannote-metrics" />
   </component>
 </module>

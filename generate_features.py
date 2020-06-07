@@ -25,6 +25,7 @@ def feature_extractor(audio, mode='librosa'):
 
 
 def append_non_speech_labels(df, filename): # this function will be executed for each audio file
+    # TODO df = df.sort_values(by='src_start_ts')
     starts = df['src_start_ts'].tolist() # all the starting times
     ends = df['src_end_ts'].tolist() # all the ending times
     num = len(starts) # how many rows
@@ -51,8 +52,9 @@ def read_labels():
     df = pd.read_csv(LABELS_PATH, usecols=COL_LIST)  # TODO remove nrows=10
 
     df['duration'] = df['src_end_ts'] - df['src_start_ts']
-    df = df[df['duration'] > 0]  # two rows have wrong labels!
-    return df.groupby(['src_file'])
+    df = df[df['duration'] > 0]  # two rows have wrong timings!
+
+    return df.groupby(['src_file'])  # TODO return the dataframe and group it later
 
 
 def generate_features(grp, mode, outputpath):
@@ -64,8 +66,10 @@ def generate_features(grp, mode, outputpath):
     x = []
     y = []
     patient_ids = []
+    # TODO keep track of ranges and where they are in the source
+    # TODO track of the line numbers from mapped_labels.csv
     for filename, group in tqdm(grp):
-        if group.shape[0] <= 2:
+        if group.shape[0] <= 2:  # TODO (1. change to <  2. don't skip the positive lines)
             continue
 
         partial_df = append_non_speech_labels(group, filename)
@@ -74,10 +78,11 @@ def generate_features(grp, mode, outputpath):
         wav, sr = librosa.load(RELATIVE_PATH + str(filename), sr=None)
         # wav = librosa.resample(wav, sr, sampling_rate) # TODO don't need this line since its already 16000
 
-        for index, row in partial_df[['src_start_ts', 'src_end_ts', 'label']].iterrows():
+        for index, row in partial_df[['src_start_ts', 'src_end_ts', 'label']].iterrows(): # TODO itertuples()
 
             s, e, label = row[0], row[1], row[2]
             number = int(((e - s) - FRAME_LEN) // FRAME_STEP)
+            # TODO warn about cases where e-s < FRAME_LEN and when number of frames is below 1
             for i in range(number):
                 feature = feature_extractor(wav[int(i * FRAME_STEP + s): int((i * FRAME_STEP + s) + FRAME_LEN)], mode) # mode='else'
                 x.append(feature)

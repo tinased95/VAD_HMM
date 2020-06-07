@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a16747b-ce41-4fcc-8106-65bd3a28bf4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mapped_labels.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_webrtc.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../py-webrtcvad/.idea/py-webrtcvad.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pyannote-audio/myscripts/copy_audio_files_to_database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pyannote-audio/myscripts/pretrained_models_on_your_own_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pyannote-audio/myscripts/sad_results_to_rttm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pyannote-metrics/.idea/pyannote-metrics.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/ThetaOscillator-SyllableSegmentation.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/check_mfcc.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/evaluation.py" afterDir="false" />
@@ -12,11 +14,16 @@
       <change afterPath="$PROJECT_DIR$/../resemblyzer/mytest.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../resemblyzer/testnewdataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/VAD_HMM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VAD_HMM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/check_the_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/check_the_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing_step.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing_step.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_step.py" beforeDir="false" afterPath="$PROJECT_DIR$/training_step.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pyannote-audio/notebooks/introduction_to_pyannote_audio_speaker_diarization_toolkit.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../pyannote-audio/notebooks/introduction_to_pyannote_audio_speaker_diarization_toolkit.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pyannote-audio/pyannote/audio/features/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pyannote-audio/pyannote/audio/features/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python-vad/example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../python-vad/example.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python-vad/pyvad/vad.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python-vad/pyvad/vad.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../resemblyzer/evaluate_copddata.py" beforeDir="false" afterPath="$PROJECT_DIR$/../resemblyzer/evaluate_copddata.py" afterDir="false" />
@@ -59,14 +66,67 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pyannote-audio/myscripts" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../pyannote-audio/myscripts" />
+      <recent name="$PROJECT_DIR$/../pyannote-audio/test_wavs/COP" />
+      <recent name="$PROJECT_DIR$/../pyannote-audio/test_wavs" />
+      <recent name="$PROJECT_DIR$/../pyannote-audio" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../pyannote-audio/myscripts" />
+      <recent name="$PROJECT_DIR$/../pyannote-audio/test_wavs/COP" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.test">
+    <configuration name="pretrained_pipelines_on_your_own_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pyannote-audio" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../pyannote-audio" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../pyannote-audio/pretrained_pipelines_on_your_own_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pyannote-audio" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../pyannote-audio" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../pyannote-audio/myscripts/copy_audio_files_to_database.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_webrtc" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VAD_HMM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,6 +151,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.pretrained_pipelines_on_your_own_data" />
         <item itemvalue="Python.test_webrtc" />
       </list>
     </recent_temporary>
@@ -118,7 +180,9 @@
       <option name="presentableId" value="Default" />
       <updated>1588876721711</updated>
       <workItem from="1588876726529" duration="127145000" />
-      <workItem from="1590208953075" duration="7610000" />
+      <workItem from="1590208953075" duration="29517000" />
+      <workItem from="1590464507202" duration="69420000" />
+      <workItem from="1591201170376" duration="28586000" />
     </task>
     <servers />
   </component>
@@ -126,57 +190,117 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="496" y="197" key="#Deployment" timestamp="1588883833795">
-      <screen x="0" y="23" width="1792" height="1022" />
+    <state x="496" y="198" key="#Deployment" timestamp="1591067897368">
+      <screen x="0" y="23" width="1792" height="1028" />
     </state>
-    <state x="496" y="197" key="#Deployment/0.23.1792.1020@0.23.1792.1020" timestamp="1588877086368" />
-    <state x="496" y="197" key="#Deployment/0.23.1792.1022@0.23.1792.1022" timestamp="1588883833795" />
-    <state x="599" y="341" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589927075216">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state x="496" y="197" key="#Deployment/0.23.1792.1020@0.23.1792.1020" timestamp="1590676717418" />
+    <state x="496" y="197" key="#Deployment/0.23.1792.1022@0.23.1792.1022" timestamp="1590530839576" />
+    <state x="496" y="198" key="#Deployment/0.23.1792.1028@0.23.1792.1028" timestamp="1591067897368" />
+    <state x="599" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591232873266">
+      <screen x="0" y="23" width="1792" height="1026" />
     </state>
     <state x="599" y="341" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1020@0.23.1792.1020" timestamp="1589927075216" />
+    <state x="599" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1022@0.23.1792.1022" timestamp="1590613372593" />
+    <state x="599" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1026@0.23.1792.1026" timestamp="1591232873266" />
     <state x="634" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588961516558">
       <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state x="634" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1022@0.23.1792.1022" timestamp="1588961516558" />
-    <state width="1750" height="123" key="GridCell.Tab.0.bottom" timestamp="1590208010010">
+    <state x="100" y="123" width="1592" height="817" key="DirDiffDialog" timestamp="1590546281095">
       <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state x="100" y="123" width="1592" height="817" key="DirDiffDialog/0.23.1792.1020@0.23.1792.1020" timestamp="1590546281095" />
+    <state width="1750" height="228" key="GridCell.Tab.0.bottom" timestamp="1591244557171">
+      <screen x="0" y="23" width="1792" height="1028" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.0.bottom/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010010" />
-    <state width="1750" height="123" key="GridCell.Tab.0.center" timestamp="1590208010009">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.0.bottom/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958780" />
+    <state width="1750" height="228" key="GridCell.Tab.0.bottom/0.23.1792.1024@0.23.1792.1024" timestamp="1590438895389" />
+    <state width="1750" height="228" key="GridCell.Tab.0.bottom/0.23.1792.1026@0.23.1792.1026" timestamp="1591235794493" />
+    <state width="1750" height="228" key="GridCell.Tab.0.bottom/0.23.1792.1028@0.23.1792.1028" timestamp="1591244557171" />
+    <state width="1750" height="228" key="GridCell.Tab.0.center" timestamp="1591244557170">
+      <screen x="0" y="23" width="1792" height="1028" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.0.center/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010009" />
-    <state width="1750" height="123" key="GridCell.Tab.0.left" timestamp="1590208010009">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.0.center/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958780" />
+    <state width="1750" height="228" key="GridCell.Tab.0.center/0.23.1792.1024@0.23.1792.1024" timestamp="1590438895388" />
+    <state width="1750" height="228" key="GridCell.Tab.0.center/0.23.1792.1026@0.23.1792.1026" timestamp="1591235794492" />
+    <state width="1750" height="228" key="GridCell.Tab.0.center/0.23.1792.1028@0.23.1792.1028" timestamp="1591244557170" />
+    <state width="1750" height="228" key="GridCell.Tab.0.left" timestamp="1591244557169">
+      <screen x="0" y="23" width="1792" height="1028" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.0.left/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010009" />
-    <state width="1750" height="123" key="GridCell.Tab.0.right" timestamp="1590208010010">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.0.left/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958779" />
+    <state width="1750" height="228" key="GridCell.Tab.0.left/0.23.1792.1024@0.23.1792.1024" timestamp="1590438895387" />
+    <state width="1750" height="228" key="GridCell.Tab.0.left/0.23.1792.1026@0.23.1792.1026" timestamp="1591235794492" />
+    <state width="1750" height="228" key="GridCell.Tab.0.left/0.23.1792.1028@0.23.1792.1028" timestamp="1591244557169" />
+    <state width="1750" height="228" key="GridCell.Tab.0.right" timestamp="1591244557170">
+      <screen x="0" y="23" width="1792" height="1028" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.0.right/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010010" />
-    <state width="1750" height="123" key="GridCell.Tab.1.bottom" timestamp="1590208010011">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.0.right/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958780" />
+    <state width="1750" height="228" key="GridCell.Tab.0.right/0.23.1792.1024@0.23.1792.1024" timestamp="1590438895388" />
+    <state width="1750" height="228" key="GridCell.Tab.0.right/0.23.1792.1026@0.23.1792.1026" timestamp="1591235794492" />
+    <state width="1750" height="228" key="GridCell.Tab.0.right/0.23.1792.1028@0.23.1792.1028" timestamp="1591244557170" />
+    <state width="1750" height="295" key="GridCell.Tab.1.bottom" timestamp="1590463958781">
+      <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.1.bottom/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010011" />
-    <state width="1750" height="123" key="GridCell.Tab.1.center" timestamp="1590208010011">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.1.bottom/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958781" />
+    <state width="1750" height="295" key="GridCell.Tab.1.bottom/0.23.1792.1026@0.23.1792.1026" timestamp="1590460103312" />
+    <state width="1750" height="295" key="GridCell.Tab.1.center" timestamp="1590463958781">
+      <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.1.center/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010011" />
-    <state width="1750" height="123" key="GridCell.Tab.1.left" timestamp="1590208010010">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.1.center/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958781" />
+    <state width="1750" height="295" key="GridCell.Tab.1.center/0.23.1792.1026@0.23.1792.1026" timestamp="1590460103311" />
+    <state width="1750" height="295" key="GridCell.Tab.1.left" timestamp="1590463958781">
+      <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.1.left/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010010" />
-    <state width="1750" height="123" key="GridCell.Tab.1.right" timestamp="1590208010011">
-      <screen x="0" y="23" width="1792" height="1020" />
+    <state width="1750" height="295" key="GridCell.Tab.1.left/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958781" />
+    <state width="1750" height="295" key="GridCell.Tab.1.left/0.23.1792.1026@0.23.1792.1026" timestamp="1590460103310" />
+    <state width="1750" height="295" key="GridCell.Tab.1.right" timestamp="1590463958781">
+      <screen x="0" y="23" width="1792" height="1022" />
     </state>
     <state width="1750" height="123" key="GridCell.Tab.1.right/0.23.1792.1020@0.23.1792.1020" timestamp="1590208010011" />
-    <state x="561" y="248" width="670" height="676" key="search.everywhere.popup" timestamp="1589157953776">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state width="1750" height="295" key="GridCell.Tab.1.right/0.23.1792.1022@0.23.1792.1022" timestamp="1590463958781" />
+    <state width="1750" height="295" key="GridCell.Tab.1.right/0.23.1792.1026@0.23.1792.1026" timestamp="1590460103311" />
+    <state x="419" y="240" width="1123" height="722" key="SettingsEditor" timestamp="1591288264465">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state x="419" y="238" key="SettingsEditor/0.23.1792.1020@0.23.1792.1020" timestamp="1590464975969" />
+    <state x="419" y="238" key="SettingsEditor/0.23.1792.1022@0.23.1792.1022" timestamp="1590613401044" />
+    <state x="419" y="239" key="SettingsEditor/0.23.1792.1024@0.23.1792.1024" timestamp="1590458015810" />
+    <state x="419" y="239" key="SettingsEditor/0.23.1792.1026@0.23.1792.1026" timestamp="1590462161657" />
+    <state x="419" y="239" width="1123" height="722" key="SettingsEditor/0.23.1792.1028@0.23.1792.1028" timestamp="1591201116785" />
+    <state x="419" y="240" key="SettingsEditor/0.23.1792.1031@0.23.1792.1031" timestamp="1591288264465" />
+    <state x="573" y="368" key="com.intellij.ide.util.TipDialog" timestamp="1591201171884">
+      <screen x="0" y="23" width="1792" height="1028" />
+    </state>
+    <state x="573" y="365" key="com.intellij.ide.util.TipDialog/0.23.1792.1020@0.23.1792.1020" timestamp="1590464507631" />
+    <state x="573" y="368" key="com.intellij.ide.util.TipDialog/0.23.1792.1028@0.23.1792.1028" timestamp="1591201171884" />
+    <state x="561" y="250" width="670" height="683" key="search.everywhere.popup" timestamp="1591305411852">
+      <screen x="0" y="23" width="1792" height="1026" />
     </state>
     <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.23.1792.1017@0.23.1792.1017" timestamp="1589157953776" />
+    <state x="561" y="249" width="670" height="680" key="search.everywhere.popup/0.23.1792.1022@0.23.1792.1022" timestamp="1590704005808" />
+    <state x="561" y="250" width="670" height="683" key="search.everywhere.popup/0.23.1792.1026@0.23.1792.1026" timestamp="1591305411852" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../tests_venv/lib/python3.7/site-packages/pyannote/audio/pipeline/speaker_diarization.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/VAD_HMM$test_webrtc.coverage" NAME="test_webrtc Coverage Results" MODIFIED="1589931041803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VAD_HMM$pretrained_pipelines_on_your_own_data.coverage" NAME="pretrained_pipelines_on_your_own_data Coverage Results" MODIFIED="1591235754643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../pyannote-audio" />
+    <SUITE FILE_PATH="coverage/VAD_HMM$test.coverage" NAME="test Coverage Results" MODIFIED="1591235794485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../pyannote-audio" />
   </component>
 </project>

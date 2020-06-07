@@ -57,6 +57,11 @@ def prediction(test_data, trained):
         predict_probs.append(scores[1] - scores[0])
         predict_max.append(max(scores))
 
+
+    #start_time, start_sample, win_length, original_file, true_label, speech, notspeech, dual_label_policy, patient_id, win_skip
+    #12846265647, 702, 10, <name of 2m segment file>, "speech", 0.5, 0.907, "drop", 21
+
+
     return predict_label, predict_probs, predict_max
 
 
@@ -79,7 +84,7 @@ def report(y_test, y_pred, show_cm=True):
 def calculate_x_y_tests(y_new, X_test, coeff):
     x_test_new = []
     y_test_new = []
-    if coeff == 13:
+    if coeff == 13: # most of this will be gone
         print("coeff 13 .....")
         for s_e_l in y_new:
             x_test_new.append(X_test[s_e_l[0]: s_e_l[1]].squeeze(axis=1))
@@ -88,7 +93,7 @@ def calculate_x_y_tests(y_new, X_test, coeff):
     elif coeff == 39:
         for s_e_l in y_new:
             feat = X_test[s_e_l[0]: s_e_l[1]].squeeze(axis=1)
-            delta_feat = delta(feat, N=1)
+            delta_feat = delta(feat, N=1) # move this code to a single file used by traiing and testing
             delta2_feat = delta(delta_feat, N=1)
             feat_39 = np.concatenate((delta_feat, delta2_feat, feat), axis=1)
             x_test_new.append(feat_39)
@@ -164,6 +169,7 @@ def main(xypath, trainedpath, coeff, win_len=10):
     print("here")
     f, axes = plt.subplots(1, 2, figsize=(10, 5))
     print("here")
+
     for k in tqdm(range(0, len(patient_ranges))):  # ,, len(patient_ranges)
         index_start, index_end, p_id = patient_ranges[k]
         print("----------------------------------------------------- Fold #", k,
@@ -174,6 +180,31 @@ def main(xypath, trainedpath, coeff, win_len=10):
 
         with open(trainedpath + "learned" + p_id + ".pkl", "rb") as file:
             learned_hmm = pickle.load(file)
+
+
+        #dual_label_policy one of {'drop', 'speech', 'notspeech', 'majority' }
+        #ApplyDualLabelPolicy(y, window, dual_label_policy)
+
+        def SplitToWindows(x, y, win_len, win_skip):
+            start = 0
+            while start + win_len <= len(x):
+                end = start + win_len
+                window = x[start:end]
+                labels = y[start:end]
+                yield x, y
+                start += win_skip
+
+        # for every sequential audio in X:
+        #     audio = load audio for file
+        #     labels = load labels for file
+        #     labels = ConvertFromRangesToArray(labels)
+        #     for window, labels in SplitToWindows(audio, labels, win_len, win_skip):
+        #         true_label = DetermineWindowLabel(labels, dual_label_policy)
+        #         if true_label is None:
+        #             continue
+        #         predicted_label = apply_model_to_window(window)
+
+
 
         tedad = repeatingNumbers(y_test)
         # win_len = 10
